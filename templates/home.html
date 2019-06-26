@@ -1,0 +1,133 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HeadWears Project</title>
+  <link rel="icon" type="image/jpeg" href="https://rukminim1.flixcart.com/image/495/594/jobsbrk0/hat/v/f/a/free-stylish-big-knot-bow-fedora-hat-for-women-and-girls-light-original-imafagyujhz2fkht.jpeg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/styles.css')}}"> -->
+
+  <meta name="google-signin-client_id" content="1089130094031-h0mvr2v20bqaursgov8dc2al3p49v4jo.apps.googleusercontent.com">
+  <style>
+    body{
+      background-image: url("Home.jpeg");
+      background-repeat: no-repeat;
+      position: relative;
+
+    }
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="{{url_for('home')}}">Head Wear</a>
++
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('home')}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Home">Home</span></a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropright">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+       <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Categories List"> Categories List
+      </span></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{{url_for('newcategory')}}">Create New Category</a>
+        {% for each in mycategories %}
+          <a class="dropdown-item" href="{{url_for('showcategoryitems',category_id=each.headwear_id)}}">{{each.headwear_name}}</a>
+        {% endfor %}
+      </div>
+    </li>
+
+     
+   
+  </ul>
+   <ul class="navbar-nav ml-auto">
+  {% if 'email' in session %}
+        <li class="nav-item"><h5 style="color: white;">{{session['email']}}</h5></li> &nbsp&nbsp&nbsp
+        <li class="nav-item "><a class="nav-link" href="{{url_for('logout')}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Logout"><span class="glyphicon glyphicon-log-in"></span> Logout</span></a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Login"><span class="glyphicon glyphicon-log-in"></span> Login</span></a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+
+
+{% with messages = get_flashed_messages() %}
+<div class="container">
+  
+
+{% for each in messages %}
+<div class="alert alert-primary">
+    {{ each }}
+  </div>
+
+{% endfor %}
+</div>
+{% endwith %}
+
+
+ <h1>     </h1>
+ 
+  <div class="row content">
+     
+    {% block content %}
+    {% endblock %}
+  </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+
+{% if categories %}
+
+	{% for each in categories %}
+	<a href="{{url_for('showcategoryitems',category_id=each.headwear_id)}}">{{each.headwear_name}}<br></a>
+	
+	
+	{% endfor %}
+	{% else %}
+		no items found
+{% endif %}
+{% endblock %}
+<a href="{{url_for('home')}}">Home</a>
+</body>
+</html>

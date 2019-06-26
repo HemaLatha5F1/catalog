@@ -1,0 +1,51 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container">
+<form method="post" action="{{url_for('editcategory',category_id=id_category)}}">
+	<div class="form-group">
+	  <label for="usr">Category name :</label>
+	  <input type="text" class="form-control" id="usr" name="category_name" value="{{headwear_name}}" required>
+	</div>	
+	<div class="container">
+	  <h2></h2>
+	  <!-- Button to Open the Modal -->
+	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	    Click Here to edit category
+	  </button>
+
+	  <!-- The Modal -->
+	  <div class="modal" id="myModal">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	      
+	        <!-- Modal Header -->
+	        <div class="modal-header">
+	          <h4 class="modal-title">Click to Confirm </h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        
+	        <!-- Modal body -->
+	        <div class="modal-body">
+	          
+	        </div>
+	        
+	        <!-- Modal footer -->
+	        <div class="modal-footer">
+	        
+	     		<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+	          <input type="submit"  class="btn btn-danger" style="background-color: green;" value="Edit Category"> 
+	        </div>
+	        
+	      </div>
+	    </div>
+	  </div>
+	  
+	</div>
+
+</form>
+ 
+
+
+</div>
+{% endblock %}

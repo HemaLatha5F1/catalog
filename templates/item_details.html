@@ -1,0 +1,30 @@
+
+{%extends "home.html"%}
+{%block content%}
+<div class="container" style="width: 850px;">
+
+<div class="card-group" >
+  <div class="card bg-primary">
+    <div class="card-body text-center" style="background-color: white;">
+      <p class="card-text" style="color: black;" ><img src="{{image}}"  width="300px" height="400px"></p>
+    </div>
+  </div>
+  <div class="card bg-warning">
+    <div class="card-body text-center" style="background-color: white;">&nbsp
+      <p class="card-text">&nbsp&nbsp&nbsp&nbsp&nbsp<!-- <h1 style="color:green;">Name : {{iname}}</h1>&nbsp
+					<h1>Brand : {{ibrand}}</h1>&nbsp
+		    		<h1>Price : ${{iprice}}</h1>
+		    		 -->
+			<ul class="list-group">
+  				<li class="list-group-item"><h1 style="color:green;">Name : {{iname}}</h1></li>
+  				<li class="list-group-item"><h2>Brand : {{ibrand}}</h2></li>
+ 				<li class="list-group-item"><h2>Price : ${{iprice}}</h2></li>
+			</ul>
+</p>
+    </div>
+  </div>
+  
+  </div> 
+</div>
+</div>
+{%endblock%}

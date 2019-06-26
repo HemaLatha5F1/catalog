@@ -1,0 +1,60 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% if not hasRecent%}
+	{%if category_id%}
+	<div class="container text-right">
+		<a href="{{url_for('editcategory',category_id=category_id)}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Edit Category"><button type="button" class="btn btn-primary">edit category</button></span></a>&nbsp&nbsp&nbsp
+		<a href="{{url_for('deletecategory',category_id=category_id)}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Delete Category"><button type="button" class="btn btn-primary">delete category</button></span></a>&nbsp&nbsp&nbsp
+		<a href="{{url_for('newitem',categoryid=category_id)}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="New Item"><button type="button" class="btn btn-primary">New Item</button></span></a>&nbsp
+	</div>
+	{% endif %}
+
+{%endif%}
+
+
+{% if Items %}
+	<div class="container">
+		<div class="card-columns">
+	{% for each in Items %}
+			
+		 	<div class="card w-75">
+		 		<div class="card-header">
+
+		 			{% if loop.index == 1 %}
+		 			
+		 			
+		 			{% endif %}
+		 			<a href="{{url_for('itemdetails',category_id=each.headwear_id,itemid=each.item_id)}}"><img src="{{each.item_image}}" width="220px" height="200px"></a>
+		 		</div>
+		    	<!--<div class="card-body">
+		    		
+		    		
+		    	</div>-->
+
+		    	<div class="card-footer">
+		    		<h4 style="color:green;">{{each.item_name}}</h4>
+		    	
+		    		<h4>${{each.item_price}}</h4>
+		    		<h4>{{each.item_brand}}</h4>
+		    		<div class="contain">
+					 <a href="{{url_for('edititem',categoryid=each.headwear_id,itemid=each.item_id)}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Edit Item"><button type="button" class="btn btn-primary">Edit Item</button></span></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<a  href="{{url_for('deleteitem',categoryid=each.headwear_id,itemid=each.item_id)}}"><span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Delete Item"><button type="button" class="btn btn-primary">Delete Item</button></span></a>
+					
+				</div>
+		    </div>
+		 	</div>
+		
+	{% endfor %}
+</div>
+</div>
+	{% else %}
+		<h3 style="position: relative;left: -1200px;color: blue;">No items found</h3>
+{% endif %}
+{% endblock %}
+
+
+
+
+
